@@ -12,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 });
 
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
