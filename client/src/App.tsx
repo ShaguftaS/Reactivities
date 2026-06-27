@@ -1,3 +1,4 @@
+import { List, ListItem, ListItemText, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -10,19 +11,19 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h3 className="app" style={{ color: 'blue' }}>
-      Reactivities
-    </h3>
-    <ul>
-      {activities.map((activity) => (
-        <li key={activity.id}>{activity.title}</li>
-      ))}
-    </ul>
-    </div>
-    
-    
-    
+    <>
+      <Typography variant='h3'>Reactivities</Typography>
+      <List>
+        {activities.map((activity) => (
+          <ListItem key={activity.id}>
+            <ListItemText> {activity.title} </ListItemText>
+          </ListItem>
+        ))}
+      </List>
+    </>
+
+
+
   )
 }
 
