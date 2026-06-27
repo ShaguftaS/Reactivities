@@ -482,3 +482,4 @@ $RECYCLE.BIN/
 *.swp
 API/reactivities.db
 API/appsettings.json
+nodemodules
