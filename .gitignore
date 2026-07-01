@@ -480,6 +480,28 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
-API/reactivities.db
+
+# Project-specific ignores
+# .NET build output
+[Bb]in/
+[Oo]bj/
+
+# Node modules (in case any appear outside the client folder)
+node_modules/
+
+# SQLite database files (and WAL/SHM sidecar files)
+*.db
+*.db-shm
+*.db-wal
+
+# App settings containing secrets / connection strings
 API/appsettings.json
-nodemodules
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.production.local
+
+API/reactivities.db-shm
