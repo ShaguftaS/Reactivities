@@ -1,24 +1,31 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
+import { useActivities } from "../../../lib/hooks/useActivities"
 
 type Props = {
-    activity: Activity
+    selectedActivity: Activity
     CancelSelectActivity: () => void
     openForm: (id?: string) => void
 }
 
-export default function ActivityDetails({ activity, CancelSelectActivity, openForm }: Props) {
+export default function ActivityDetails({ selectedActivity, CancelSelectActivity, openForm }: Props) {
+
+    const { activities } = useActivities();
+    const activity = activities?.find(x => x.id === selectedActivity.id);
+
+    if (!activity) return <Typography>Loading...</Typography>
+
     return (
         <Card sx={{ borderRadius: 3 }}>
-            <CardMedia 
-            component="img"
-            src={`/images/categoryImages/${activity.category}.jpg`}
+            <CardMedia
+                component="img"
+                src={`/images/categoryImages/${activity.category}.jpg`}
             />
             <CardContent>
-                <Typography variant ="h5"> {activity.title}</Typography>
-                <Typography variant ="subtitle1" sx={{ fontWeight: 'light' }}> {activity.date}</Typography>
-                <Typography variant ="body1"> {activity.description}</Typography>
+                <Typography variant="h5"> {activity.title}</Typography>
+                <Typography variant="subtitle1" sx={{ fontWeight: 'light' }}> {activity.date}</Typography>
+                <Typography variant="body1"> {activity.description}</Typography>
             </CardContent>
-            <CardActions>   
+            <CardActions>
                 <Button color="primary" onClick={() => openForm(activity.id)}>
                     Edit
                 </Button>
